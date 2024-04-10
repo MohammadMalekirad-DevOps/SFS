@@ -1,0 +1,2 @@
+# SFS
+Simple functional scripts
