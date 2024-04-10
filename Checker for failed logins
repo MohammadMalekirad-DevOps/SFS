@@ -1,0 +1,23 @@
+def find_failed_logins(log_file):
+    failed_attempts = {}
+    users_with_3_failures = []
+    with open(log_file, 'r') as file:
+        for line in file:
+            parts = line.split(':')
+            username = parts[0].strip()
+            login_status = parts[1].strip()
+
+            if login_status == 'failed':
+                if username in failed_attempts:
+                    failed_attempts[username] += 1
+                else:
+                    failed_attempts[username] = 1
+
+                if failed_attempts[username] == 3:
+                    users_with_3_failures.append(username)
+
+    return users_with_3_failures
+
+print(find_failed_logins('logs.txt'))
+
+# tip :  replace 'logs.txt' with the actual path to your log file. 
